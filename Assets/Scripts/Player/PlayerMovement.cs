@@ -18,11 +18,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        //if key leftarrow/rightarrow is pressed MoveLane
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             MoveLane("left");
         }
-
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             MoveLane("right");
@@ -39,11 +39,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (direction == "left")
         {
+            if (m_transform.position.z != 5)
+            {
             m_transform.position = m_transform.position + new Vector3(0, 0, 5);
+            }
         }
         else if (direction == "right")
         {
-            m_transform.position = m_transform.position + new Vector3(0, 0, -5);
+            if (m_transform.position.z != -5)
+            {
+                m_transform.position = m_transform.position + new Vector3(0, 0, -5);
+            }
         }
     }
 }
