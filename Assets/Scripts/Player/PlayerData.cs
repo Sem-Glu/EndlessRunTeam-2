@@ -7,4 +7,5 @@ public class PlayerData : ScriptableObject
 {
     public float speed;
     public Vector3 direction;
+    public Vector3 spawnPoint;
 }
