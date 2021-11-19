@@ -51,9 +51,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8357797103507800859, guid: 733ba1e25c954664c8daefa80adf419c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d8f2b195556aa14c9c7584753157ffa, type: 2}
+    - target: {fileID: -3103335180071090982, guid: 733ba1e25c954664c8daefa80adf419c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d8f2b195556aa14c9c7584753157ffa, type: 2}
+    - target: {fileID: -2965297831580840806, guid: 733ba1e25c954664c8daefa80adf419c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d8f2b195556aa14c9c7584753157ffa, type: 2}
+    - target: {fileID: -1048424332980589162, guid: 733ba1e25c954664c8daefa80adf419c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d8f2b195556aa14c9c7584753157ffa, type: 2}
     - target: {fileID: 919132149155446097, guid: 733ba1e25c954664c8daefa80adf419c, type: 3}
       propertyPath: m_Name
-      value: Car Obstacle
+      value: Car Obstacle Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 733ba1e25c954664c8daefa80adf419c, type: 3}
       propertyPath: m_IsActive
@@ -63,6 +79,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Hostile
       objectReference: {fileID: 0}
+    - target: {fileID: 4566124036910231951, guid: 733ba1e25c954664c8daefa80adf419c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d8f2b195556aa14c9c7584753157ffa, type: 2}
+    - target: {fileID: 5658130615558480557, guid: 733ba1e25c954664c8daefa80adf419c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d8f2b195556aa14c9c7584753157ffa, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 733ba1e25c954664c8daefa80adf419c, type: 3}
 --- !u!1 &5301976363919889022 stripped
