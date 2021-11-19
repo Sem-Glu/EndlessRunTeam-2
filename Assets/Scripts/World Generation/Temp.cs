@@ -7,7 +7,7 @@ public class Temp : MonoBehaviour
     [SerializeField]
     ObjectPool ObjectPool;
     [SerializeField]
-    ObstacleGenerationScript generationScript;
+    GenerationScript generationScript;
     private int listCount;
     Stack<GameObject> stack = new Stack<GameObject>();
     void Start()

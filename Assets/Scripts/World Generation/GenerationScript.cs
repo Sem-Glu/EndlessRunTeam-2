@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleGenerationScript : MonoBehaviour
+public class GenerationScript : MonoBehaviour
 {
-    private static ObstacleGenerationScript instance;
-    public static ObstacleGenerationScript Instance { get => instance; } //Singleton!
+    private static GenerationScript instance;
+    public static GenerationScript Instance { get => instance; } //Singleton!
 
     [Header("Obstacle Spawn Stuff:")]
     [SerializeField]
@@ -15,8 +15,13 @@ public class ObstacleGenerationScript : MonoBehaviour
     [SerializeField]
     private int randomObject; //This gives a random value that determines what object spawns
 
-    private int newRoadTime = 10;
+    [SerializeField]
+    private float tempRoadDespawnTime = 0.65f;
+    [SerializeField]
+    private float newRoadTime = 1.65f;
     private bool roadSpawn;
+    private float roadmove;
+    public List<GameObject> planeSpawnPoints;
 
     [Header("Wave Controller")]
     [SerializeField]
@@ -33,12 +38,21 @@ public class ObstacleGenerationScript : MonoBehaviour
     [SerializeField]
     public List<GameObject> obstacles;
 
+    [Header("ObjectPool Stuff:")]
+    [SerializeField]
+    ObjectPool ObjectPool;
+    private int listCount;
+    Stack<GameObject> stack = new Stack<GameObject>();
+    [SerializeField]
+    private int waitForDespawnTime;
     void Start()
     {
         gameStart = false;
         difficultyIncrease = false;
         roadSpawn = false;
         StartCoroutine(GameDifficulty());
+        StartCoroutine(RoadSpawner());
+        StartCoroutine(TempReturnTimer());
     }
     void FixedUpdate()
     {
@@ -46,6 +60,7 @@ public class ObstacleGenerationScript : MonoBehaviour
         {
             difficultyIncrease = true;
             roadSpawn = true;
+            waitForDespawnTime = waitForDespawnTime + 1;
         }
         else
         {
@@ -53,6 +68,8 @@ public class ObstacleGenerationScript : MonoBehaviour
             roadSpawn = false;
         }
         rngSpawner = Random.Range(1, 10000);
+        
+
     }
 
     void ObstacleGenerator()
@@ -74,7 +91,17 @@ public class ObstacleGenerationScript : MonoBehaviour
                 yield return new WaitForSeconds(newRoadTime);
                 if (roadSpawn == true)
                 {
-                    
+                    GameObject go = ObjectPool.GetPooledObject();
+                    go.transform.position = planeSpawnPoints[listCount].transform.position;
+                    listCount = listCount + 1;
+                    if (listCount == planeSpawnPoints.Count)
+                    {
+                        listCount = 0;
+                        
+                    }
+                    stack.Push(go);
+
+                    ObstacleGenerator();
                 }
 
             }
@@ -92,9 +119,24 @@ public class ObstacleGenerationScript : MonoBehaviour
                 if (difficultyIncrease == true)
                 {
                     spawnChance = spawnChance + difficultyTweak;
-                    Debug.Log(spawnChance);
                 }
                 
+            }
+            yield return null;
+        }
+    }
+    IEnumerator TempReturnTimer()
+    {
+        while (true)
+        {
+            if (roadSpawn == true && waitForDespawnTime >= 3600)
+            {
+                yield return new WaitForSeconds(tempRoadDespawnTime);
+                if (roadSpawn == true)
+                {
+                    ObjectPool.ReturnPooledObject(stack.Pop());
+                }
+
             }
             yield return null;
         }
