@@ -6,7 +6,7 @@ public class ScoreCounter : MonoBehaviour
 {
     private Transform m_transform;
     public float Score;
-    public float MaxScore;
+    public int MaxScore;
 
     private void Start()
     {
@@ -21,5 +21,4 @@ public class ScoreCounter : MonoBehaviour
         MaxScore = Mathf.RoundToInt(Score);
         }
     }
-
 }
