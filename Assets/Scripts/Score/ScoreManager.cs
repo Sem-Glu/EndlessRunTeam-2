@@ -6,7 +6,7 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     public ScoreCounter m_score;
-    public Score_Data m_data;
+    public ScoreData m_data;
     public int CurrentHigh;
 
     private void Awake()
@@ -31,6 +31,11 @@ public class ScoreManager : MonoBehaviour
         if (m_data.HighScore < CurrentHigh)
         {
             m_data.HighScore = CurrentHigh;
+        }
+
+        if (m_score.MaxScore < CurrentHigh)
+        {
+            CurrentHigh = CurrentHigh;
         }
     }
 }
