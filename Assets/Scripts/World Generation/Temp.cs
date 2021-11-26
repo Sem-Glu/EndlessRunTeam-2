@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Temp : MonoBehaviour
 {
-    [SerializeField]
-    ObjectPool ObjectPool;
-    [SerializeField]
-    GenerationScript generationScript;
-    private int listCount;
-    Stack<GameObject> stack = new Stack<GameObject>();
-    void Start()
-    {
+    //[SerializeField]
+    //ObjectPool ObjectPool;
+    //[SerializeField]
+    //GenerationScript generationScript;
+    //private int listCount;
+    //Stack<GameObject> stack = new Stack<GameObject>();
+    //void Start()
+    //{
         
-    }
+    //}
 
-    void Update()
-    {
+    //void Update()
+    //{
         //if (Input.GetKeyDown("space"))
         //{
         //    GameObject go = ObjectPool.GetPooledObject();
@@ -32,5 +32,5 @@ public class Temp : MonoBehaviour
         //{
         //    ObjectPool.ReturnPooledObject(stack.Pop());
         //}
-    }
+    //}
 }
