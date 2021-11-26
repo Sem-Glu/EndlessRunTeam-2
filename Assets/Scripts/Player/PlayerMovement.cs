@@ -42,14 +42,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if (m_transform.position.z != 2.3)
             {
-            m_transform.position = m_transform.position + new Vector3(0, 0, 2);
+            m_transform.position = m_transform.position + new Vector3(0, 0, 1.91f);
             }
         }
         else if (direction == "right")
         {
-            if (m_transform.position.z != -1.7)
+            if (m_transform.position.z != -1.69)
             {
-                m_transform.position = m_transform.position + new Vector3(0, 0, -2);
+                m_transform.position = m_transform.position + new Vector3(0, 0, -1.91f);
             }
         }
     }
