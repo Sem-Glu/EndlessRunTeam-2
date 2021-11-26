@@ -17,20 +17,20 @@ public class Temp : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("space"))
-        {
-            GameObject go = ObjectPool.GetPooledObject();
-            go.transform.position = generationScript.obstacleSpawnPoints[listCount].transform.position;
-            listCount = listCount + 1;
-            if (listCount == generationScript.obstacleSpawnPoints.Count)
-            {
-                listCount = 0;
-            }
-            stack.Push(go);
-        }
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            ObjectPool.ReturnPooledObject(stack.Pop());
-        }
+        //if (Input.GetKeyDown("space"))
+        //{
+        //    GameObject go = ObjectPool.GetPooledObject();
+        //    go.transform.position = generationScript.obstacleSpawnPoints[listCount].transform.position;
+        //    listCount = listCount + 1;
+        //    if (listCount == generationScript.obstacleSpawnPoints.Count)
+        //    {
+        //        listCount = 0;
+        //    }
+        //    stack.Push(go);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Backspace))
+        //{
+        //    ObjectPool.ReturnPooledObject(stack.Pop());
+        //}
     }
 }

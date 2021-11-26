@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolList: []
-  poolSize: 50
+  poolSize: 100
   pooledObject: {fileID: 2658244011416608945, guid: 8e586aac1d600944693ceabd27c4d1cb, type: 3}
 --- !u!4 &128122536
 Transform:
@@ -206,8 +206,7 @@ MonoBehaviour:
   rngSpawner: 0
   spawnChance: 0
   randomObject: 0
-  tempRoadDespawnTime: 60
-  newRoadTime: 1.65
+  roadSpawn: 0
   planeSpawnPoints:
   - {fileID: 768432932}
   waveTime: 10
@@ -224,7 +223,8 @@ MonoBehaviour:
   - {fileID: 1529895214}
   - {fileID: 1798056413}
   ObjectPool: {fileID: 128122535}
-  waitForDespawnTime: 0
+  list: []
+  despawnPos: 0
 --- !u!4 &368382386
 Transform:
   m_ObjectHideFlags: 0

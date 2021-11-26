@@ -15,12 +15,9 @@ public class GenerationScript : MonoBehaviour
     [SerializeField]
     private int randomObject; //This gives a random value that determines what object spawns
 
+    
     [SerializeField]
-    private float tempRoadDespawnTime = 0.65f;
-    [SerializeField]
-    private float newRoadTime = 1.65f;
     private bool roadSpawn;
-    private float roadmove;
     public List<GameObject> planeSpawnPoints;
 
     [Header("Wave Controller")]
@@ -32,7 +29,7 @@ public class GenerationScript : MonoBehaviour
     private bool difficultyIncrease;
     [Header("PreSpawn Stuff:")]
     [SerializeField]
-    private bool gameStart;
+    public bool gameStart;
     [SerializeField]
     public List<GameObject> obstacleSpawnPoints;
     [SerializeField]
@@ -42,16 +39,47 @@ public class GenerationScript : MonoBehaviour
     [SerializeField]
     ObjectPool ObjectPool;
     private int listCount;
-    Stack<GameObject> stack = new Stack<GameObject>();
     [SerializeField]
-    private int waitForDespawnTime;
+    List<GameObject> list = new List<GameObject>();
+    [SerializeField]
+    private int despawnPos;
+
+    private int startPlanes;
+    private Vector3 newPlanesPosition;
+    private Transform lastSpawned;
+
+    private void Awake()
+    {
+        if (GenerationScript.instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
     void Start()
     {
+        despawnPos = 500;
+        startPlanes = 50;
         gameStart = false;
         difficultyIncrease = false;
         roadSpawn = false;
         StartCoroutine(GameDifficulty());
         StartCoroutine(RoadSpawner());
+        
+        newPlanesPosition = new Vector3(-10, 0, 0);
+        for (int i = 0; i < startPlanes; i++)
+        {
+            GameObject go = ObjectPool.GetPooledObject();
+            newPlanesPosition.x = newPlanesPosition.x + 10;
+            go.transform.position = newPlanesPosition;
+            list.Add(go);
+            go.name = i.ToString();
+            ObstacleGenerator();
+        }
+        lastSpawned = list[0].transform;
         StartCoroutine(TempReturnTimer());
     }
     void FixedUpdate()
@@ -60,7 +88,6 @@ public class GenerationScript : MonoBehaviour
         {
             difficultyIncrease = true;
             roadSpawn = true;
-            waitForDespawnTime = waitForDespawnTime + 1;
         }
         else
         {
@@ -69,7 +96,15 @@ public class GenerationScript : MonoBehaviour
         }
         rngSpawner = Random.Range(1, 10000);
         
+        
 
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            gameStart = true;
+        }
     }
 
     void ObstacleGenerator()
@@ -88,20 +123,20 @@ public class GenerationScript : MonoBehaviour
         {
             if (roadSpawn == true)
             {
-                yield return new WaitForSeconds(newRoadTime);
-                if (roadSpawn == true)
+                
+                if (lastSpawned.position.x >= 10)
                 {
                     GameObject go = ObjectPool.GetPooledObject();
-                    go.transform.position = planeSpawnPoints[listCount].transform.position;
-                    listCount = listCount + 1;
-                    if (listCount == planeSpawnPoints.Count)
-                    {
-                        listCount = 0;
-                        
-                    }
-                    stack.Push(go);
-
+                    //go.transform.position = planeSpawnPoints[listCount].transform.position;
+                    go.transform.position = lastSpawned.position + Vector3.left * 10;
+                    //listCount = listCount + 1;
+                    //if (listCount == planeSpawnPoints.Count)
+                    //{
+                    //    listCount = 0;
+                    //}
+                    list.Add(go);
                     ObstacleGenerator();
+                    lastSpawned = go.transform;
                 }
 
             }
@@ -129,15 +164,15 @@ public class GenerationScript : MonoBehaviour
     {
         while (true)
         {
-            if (roadSpawn == true && waitForDespawnTime >= 3600)
-            {
-                yield return new WaitForSeconds(tempRoadDespawnTime);
-                if (roadSpawn == true)
+                for (int i = 0; i < list.Count; i++)
                 {
-                    ObjectPool.ReturnPooledObject(stack.Pop());
+                    if (list[i].transform.position.x >= despawnPos)
+                    {
+                        ObjectPool.ReturnPooledObject(list[i]);
+                        list.Remove(list[i]);
+                    }
+                    
                 }
-
-            }
             yield return null;
         }
     }
