@@ -22,6 +22,7 @@ public class EventManager : MonoBehaviour
     public void SwitchScene(string scene)
     {
         SceneManager.LoadScene(scene);
+        Debug.Log("Switch");
     }
 
     public void QuitGame()
