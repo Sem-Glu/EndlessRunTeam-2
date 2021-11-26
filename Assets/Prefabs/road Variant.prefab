@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8992247584335850257, guid: 56f1e8d4d2ae0374b9a981f86de237cc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84bf346b2dc625d4ea369fcf9fd08af2, type: 2}
     - target: {fileID: -8770906241266521433, guid: 56f1e8d4d2ae0374b9a981f86de237cc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -55,10 +59,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5182622628342993630, guid: 56f1e8d4d2ae0374b9a981f86de237cc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84bf346b2dc625d4ea369fcf9fd08af2, type: 2}
+    - target: {fileID: -1723224909654377422, guid: 56f1e8d4d2ae0374b9a981f86de237cc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 50a1fce7eee290f418f74a8b9c2929e7, type: 2}
+    - target: {fileID: -1137199717199486201, guid: 56f1e8d4d2ae0374b9a981f86de237cc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d59cefef3099d01459b3de2a65b4656f, type: 2}
     - target: {fileID: -1114118744923159821, guid: 56f1e8d4d2ae0374b9a981f86de237cc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8caaa1336bf8977428aa43b994eb9d73, type: 2}
+    - target: {fileID: -401946213785389866, guid: 56f1e8d4d2ae0374b9a981f86de237cc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d59cefef3099d01459b3de2a65b4656f, type: 2}
     - target: {fileID: 90314740320732709, guid: 56f1e8d4d2ae0374b9a981f86de237cc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -67,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: road Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3026756970882714005, guid: 56f1e8d4d2ae0374b9a981f86de237cc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 50a1fce7eee290f418f74a8b9c2929e7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56f1e8d4d2ae0374b9a981f86de237cc, type: 3}
 --- !u!1 &1719984523967403311 stripped

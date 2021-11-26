@@ -48,8 +48,4 @@ public class ObjectPool : MonoBehaviour
             go.SetActive(false);
         }
     }
-    void Update()
-    {
-        
-    }
 }
